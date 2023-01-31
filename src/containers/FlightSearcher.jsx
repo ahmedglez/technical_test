@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TextField, Button, Box, Container } from "@mui/material";
+import { TextField, Button, Box, Container, Grid } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import theme from "assets/theme";
 import { ThemeProvider } from "@mui/material";
@@ -7,6 +7,9 @@ import { ThemeProvider } from "@mui/material";
 //Components
 import TitleComponent from "components/TitleComponent";
 import FiltersContainer from "./FiltersContainer";
+import FlightComponent from "components/FlightComponent";
+import DateComponent from "components/DateComponent";
+import SearchButton from "components/SearchButton";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -33,25 +36,15 @@ const FlightSearcher = () => {
       <Container dispaly="flex" direction="column" justifyContent="flex-start">
         <TitleComponent />
         <FiltersContainer />
-        <form className={classes.root} onSubmit={handleSubmit}>
-          <TextField
-            id="from"
-            label="From"
-            variant="outlined"
-            value={from}
-            onChange={(e) => setFrom(e.target.value)}
-          />
-          <TextField
-            id="to"
-            label="To"
-            variant="outlined"
-            value={to}
-            onChange={(e) => setTo(e.target.value)}
-          />
-          <Button variant="contained" type="submit">
-            Search
-          </Button>
-        </form>
+        <Grid spacing={2} mt={2}>
+          <FlightComponent />
+        </Grid>
+        <Grid spacing={2} mt={2}>
+          <DateComponent />
+        </Grid>
+        <Grid spacing={2} mt={2}>
+          <SearchButton />
+        </Grid>
       </Container>
     </ThemeProvider>
   );

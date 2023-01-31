@@ -25,7 +25,7 @@ export default function BagsSelectMenu(props) {
   const [option, setOption] = React.useState("");
   const dispatch = useDispatch();
   const { bags, carryOnBags, checkedBags } = useSelector((state) => state.flights);
-  const [total, setTotal] = useState(bags);
+  const [total, setTotal] = useState(0);
   const [numbersArray, setNumbersArray] = useState([bags, carryOnBags, checkedBags]);
 
   const handleAdd = (index) => {
@@ -73,7 +73,6 @@ export default function BagsSelectMenu(props) {
                     fontSize: "1.1rem",
                     fontWeight: "bold",
                     color: "gray",
-                    marginTop: "0.5rem",
                   }}
                 >
                   {numbersArray[index]}

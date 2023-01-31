@@ -27,7 +27,7 @@ const flights = [
     price: 67220,
     currency: "XPF",
     airline: "Emard, Bogan and Hermann",
-    airlineLogo: "https://loremflickr.com/640/480",
+    airlineLogo: "https://loremflickr.com/641/481",
     duration: 6450,
     cabin: "multiple",
     trip: "trip builder",
