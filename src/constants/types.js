@@ -1,0 +1,46 @@
+/* STATE TYPES */
+export const SET_ERROR = "SET_ERROR";
+export const CLEAR_ERROR = "CLEAR_ERROR";
+export const SET_LOADING = "SET_LOADING";
+export const CLEAR_LOADING = "CLEAR_LOADING";
+export const SET_STATE = "SET_STATE";
+
+/* FLIGHTS TYPES */
+export const SET_ROUND_TRIP = "SET_ROUND_TRIP";
+export const SET_ONE_WAY = "SET_ONE_WAY";
+export const SET_MULTI_CITY = "SET_MULTI_CITY";
+export const SET_TRIP_BUILDER = "SET_TRIP_BUILDER";
+
+
+/* PROPERTIES TYPES */
+export const SET_ORIGIN = "SET_ORIGIN";
+export const SET_DESTINATION = "SET_DESTINATION";
+export const INVERT_ORIGIN_DESTINATION = "INVERT_ORIGIN_DESTINATION";
+export const SET_DEPARTURE_DATE = "SET_DEPARTURE_DATE";
+export const SET_RETURN_DATE = "SET_RETURN_DATE";
+export const SET_TRAVELERS = "SET_TRAVELERS";
+export const SET_CABIN = "SET_CABIN";
+
+
+/* CLASS TYPES */
+export const SET_ECONOMY = "SET_ECONOMY";
+export const SET_PREMIUM_ECONOMY = "SET_PREMIUM_ECONOMY";
+export const SET_BUSINESS = "SET_BUSINESS";
+export const SET_FIRST_CLASS = "SET_FIRST_CLASS";
+export const SET_MULTIPLE = "SET_MULTIPLE";
+
+/* BAGS TYPES */
+export const SET_BAGS = "SET_BAGS";
+export const ADD_CARRY_ON_BAG = "ADD_CARRY_ON_BAG";
+export const ADD_CHECKED_BAG = "ADD_CHECKED_BAG";
+export const REMOVE_CARRY_ON_BAG = "REMOVE_CARRY_ON_BAG";
+export const REMOVE_CHECKED_BAG = "REMOVE_CHECKED_BAG";
+
+
+
+
+
+
+
+
+
