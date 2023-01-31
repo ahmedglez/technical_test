@@ -1,5 +1,6 @@
 /* config-overrides.js */
 const webpack = require("webpack");
+const BabelPluginImport = require("babel-plugin-import");
 module.exports = function override(config, env) {
   //do stuff with the webpack config...
 
@@ -19,7 +20,27 @@ module.exports = function override(config, env) {
       process: "process/browser",
       Buffer: ["buffer", "Buffer"],
     })
-  )
+  );
+  config.plugins.push(
+    new webpack.ProvidePlugin(
+      {
+        libraryName: "@mui/material",
+        libraryDirectory: "",
+        camel2DashComponentName: false,
+      },
+      "core"
+    )
+  );
+   config.plugins.push(
+     new webpack.ProvidePlugin(
+       {
+         libraryName: "@mui/icons-material",
+         libraryDirectory: "",
+         camel2DashComponentName: false,
+       },
+       "icons"
+     )
+   );
 
   return config;
 };

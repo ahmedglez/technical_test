@@ -6,9 +6,26 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
+import { useContext } from "react";
+import AppContext from "contexts/AppContext";
 
 export default function FlightsPopMenu(props) {
-  const { data } = props;
+  const { data, label } = props;
+  const { setSearch, state } = useContext(AppContext);
+
+  const handleClick = (item) => {
+    if (label === "origins") {
+      setSearch({
+        ...state.search,
+        origin: item.label,
+      });
+    } else if (label === "destinations") {
+      setSearch({
+        ...state.search,
+        destination: item.label,
+      });
+    }
+  };
 
   return (
     <List
@@ -22,7 +39,16 @@ export default function FlightsPopMenu(props) {
       }}
     >
       {data.map((item) => (
-        <ListItem alignItems="flex-start">
+        <ListItem
+          alignItems="flex-start"
+          sx={{
+            cursor: "pointer",
+            "&:hover": {
+              backgroundColor: "#f5f5f5",
+            },
+          }}
+          onClick={() => handleClick(item)}
+        >
           <ListItemAvatar>
             <Avatar alt="airlain logo" src={item.airlaineLogo} />
           </ListItemAvatar>

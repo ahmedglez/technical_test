@@ -15,9 +15,6 @@ export default function DateComponent() {
   const { setSearch, state } = useContext(AppContext);
     const [payload, setPayload] = useState(state.search);
     
-    React.useEffect(() => {
-        console.clear();
-    }, []);
 
   const handleChange = (newValue) => {
     setValue(newValue);

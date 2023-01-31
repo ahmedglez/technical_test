@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import FlightLandIcon from "@mui/icons-material/FlightLand";
 import { TextField, Button, Box, Container, Grid } from "@mui/material";
@@ -12,12 +12,13 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import { useContext, useState } from "react";
 import AppContext from "contexts/AppContext";
 import FlightsPopMenu from "./FlightsPopMenu";
+import { set } from "utils/LocalStorageUtils";
 
 const FlightComponent = () => {
-  const { state } = useContext(AppContext);
+  const { state, setSearch } = useContext(AppContext);
   const { origins, destinations } = state;
-  const [from, setFrom] = useState("");
-  const [to, setTo] = useState("");
+  const [from, setFrom] = useState(state.search.origin);
+  const [to, setTo] = useState(state.search.destination);
   const [mobileView, setMobileView] = useState(window.innerWidth < 600);
   const [drawerOpen, setDrawerOpen] = useState([false, false]);
   console.log("Origins", origins);
@@ -28,17 +29,24 @@ const FlightComponent = () => {
       newState[index] = !newState[index];
       return newState;
     });
-    };
-    
-    const handleDrawerClick = (index) => {
-        setDrawerOpen((prevState) => {
-            const newState = [...prevState];
-            newState[index] = true;
-            newState[1 - index] = false;
-            return newState;
-        });
+  };
 
+  useEffect(() => {
+    const updateSearch = () => {
+      setFrom(state.search.origin);
+      setTo(state.search.destination);
     };
+    updateSearch();
+  }, [state.search]);
+
+  const handleDrawerClick = (index) => {
+    setDrawerOpen((prevState) => {
+      const newState = [...prevState];
+      newState[index] = true;
+      newState[1 - index] = false;
+      return newState;
+    });
+  };
 
   const handleChangeFrom = (event) => {
     setFrom(event.target.value);
@@ -48,7 +56,7 @@ const FlightComponent = () => {
     setTo(event.target.value);
   };
 
-  const PopMenuContainer = (data) => {
+  const PopMenuContainer = (flights, label) => {
     return (
       <Grid
         item
@@ -63,7 +71,7 @@ const FlightComponent = () => {
           top: "100%",
         }}
       >
-        <FlightsPopMenu data={origins} />
+        <FlightsPopMenu data={flights} label={label} />
       </Grid>
     );
   };
@@ -75,9 +83,11 @@ const FlightComponent = () => {
           <InputLabel htmlFor="input-with-icon-adornment">From</InputLabel>
           <Input
             onChange={handleChangeFrom}
-            onClick={() => handleDrawerClick(0)}
-            onBlur={() => handleDrawerToggle(0)}
+            onClick={() => {
+              setDrawerOpen([!drawerOpen[0], false]);
+            }}
             id="input-with-icon-adornment"
+            value={from}
             startAdornment={
               <InputAdornment position="start">
                 <FlightTakeoffIcon color="primary" />
@@ -85,7 +95,7 @@ const FlightComponent = () => {
             }
           />
         </FormControl>
-        {drawerOpen[0] && <PopMenuContainer data={origins} />}
+        {drawerOpen[0] && PopMenuContainer(origins, "origins")}
       </Grid>
       {mobileView ? (
         <SwapVertIcon
@@ -115,16 +125,18 @@ const FlightComponent = () => {
           <InputLabel htmlFor="input-with-icon-adornment">To</InputLabel>
           <Input
             onChange={handleChangeTo}
-            onClick={() => handleDrawerClick(1)}
-            onBlur={() => handleDrawerToggle(1)}
+            onClick={() => {
+              setDrawerOpen([false, !drawerOpen[1]]);
+            }}
             id="input-with-icon-adornment"
+            value={to}
             startAdornment={
               <InputAdornment position="start">
                 <FlightLandIcon color="primary" />
               </InputAdornment>
             }
           />
-          {drawerOpen[1] && <PopMenuContainer data={destinations} />}
+          {drawerOpen[1] && PopMenuContainer(destinations, "destinations")}
         </FormControl>
       </Grid>
     </Grid>
