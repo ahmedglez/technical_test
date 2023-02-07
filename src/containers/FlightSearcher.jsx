@@ -11,26 +11,7 @@ import FlightComponent from "components/FlightComponent";
 import DateComponent from "components/DateComponent";
 import SearchButton from "components/SearchButton";
 
-const useStyles = makeStyles(() => ({
-  root: {
-    "& > *": {
-      margin: theme.spacing(1),
-      width: 200,
-      fontFamily: "Roboto",
-    },
-  },
-}));
-
 const FlightSearcher = () => {
-  const classes = useStyles();
-  const [from, setFrom] = useState("");
-  const [to, setTo] = useState("");
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(`Searching flights from ${from} to ${to}`);
-  };
-
   return (
     <ThemeProvider theme={theme}>
       <Container dispaly="flex" direction="column" justifyContent="flex-start">
