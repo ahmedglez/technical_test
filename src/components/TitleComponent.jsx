@@ -6,7 +6,7 @@ import { useContext } from "react";
 const TitleComponent = () => {
   const { state } = useContext(AppContext);
   return (
-    <Box sx={{ display: "flex", justifyContent: "start", alignItems: "center" }}>
+    <Box sx={{ display: "flex", justifyContent: "start", alignItems: "center" }} mt={5}>
       <Typography
         variant="h4"
         component="h1"
@@ -20,7 +20,7 @@ const TitleComponent = () => {
           letterSpacing: "0.05em",
         }}
       >
-        {state.results.length === 0 ? "Where would you like to go?" : "Flights available"} 
+        {state.results.length === 0 ? "Where would you like to go?" : "Available flights"} 
       </Typography>
     </Box>
   );
