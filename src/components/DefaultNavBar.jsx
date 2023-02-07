@@ -1,22 +1,20 @@
-import React, { useState } from "react";
+import LoginIcon from "@mui/icons-material/Login";
+import PersonIcon from "@mui/icons-material/Person";
 import {
   AppBar,
+  Box,
   Button,
+  CardMedia,
   Tab,
   Tabs,
   Toolbar,
-  Typography,
   useMediaQuery,
-  useTheme,
-  CardMedia,
-  Box
+  useTheme
 } from "@mui/material";
+import logo from "assets/images/logo.png";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import DrawerComp from "./Drawer";
-import logo from "assets/images/logo.png";
-import LoginIcon from "@mui/icons-material/Login";
-import PersonIcon from "@mui/icons-material/Person";
-import Home from "pages/Home";
 const NavBar = () => {
   const [value, setValue] = useState();
   const theme = useTheme();
@@ -47,7 +45,8 @@ const NavBar = () => {
               image={logo}
               alt="logo"
               sx={{
-                width: "50px", height: "50px",
+                width: "50px",
+                height: "50px",
                 filter: "drop-shadow(2px 2px 2px #000000)",
               }}
             />
@@ -63,8 +62,7 @@ const NavBar = () => {
                 alignItems: "center",
                 justifyContent: "space-between",
                 width: "100%",
-                }}
-                
+              }}
             >
               <Tabs
                 sx={{ marginLeft: "auto" }}

@@ -1,5 +1,5 @@
-import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 import { Grid, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import Fab from "@mui/material/Fab";
@@ -9,15 +9,14 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import * as React from "react";
 import { useState } from "react";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 //REDUX
 import {
-  setBags,
   addCarryOnBag,
   addCheckedBag,
   removeCarryOnBag,
   removeCheckedBag,
+  setBags,
 } from "actions/fligth.actions";
 
 export default function BagsSelectMenu(props) {
@@ -59,18 +58,18 @@ export default function BagsSelectMenu(props) {
           label="Option"
         >
           {options.map((option, index) => (
-            <Grid container spacing={1}>
-              <Grid item xs={7}>
+            <Grid container spacing={2} p={0.5}>
+              <Grid item xs={6}>
                 <MenuItem value={option}>{option} &nbsp;</MenuItem>
               </Grid>
-              <Grid item xs={5} display="flex" direction="row" spacing={3} gap={1}>
+              <Grid item xs={6} display="flex" direction="row" spacing={3} gap={1}>
                 <Fab size="small" color="success" aria-label="add" onClick={() => handleAdd(index)}>
                   <AddIcon />
                 </Fab>
                 <Typography
                   variant={"h6"}
                   sx={{
-                    fontSize: "1.1rem",
+                    fontSize: "1.2rem",
                     fontWeight: "bold",
                     color: "gray",
                   }}

@@ -1,18 +1,15 @@
-import React, { useEffect } from "react";
-import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import FlightLandIcon from "@mui/icons-material/FlightLand";
-import { TextField, Button, Box, Container, Grid } from "@mui/material";
+import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import SwapHorizOutlinedIcon from "@mui/icons-material/SwapHorizOutlined";
 import SwapVertIcon from "@mui/icons-material/SwapVert";
-import Input from "@mui/material/Input";
-import InputLabel from "@mui/material/InputLabel";
-import InputAdornment from "@mui/material/InputAdornment";
+import { Grid } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import { useContext, useState } from "react";
+import Input from "@mui/material/Input";
+import InputAdornment from "@mui/material/InputAdornment";
+import InputLabel from "@mui/material/InputLabel";
 import AppContext from "contexts/AppContext";
+import { useContext, useEffect, useState } from "react";
 import FlightsPopMenu from "./FlightsPopMenu";
-import { set } from "utils/LocalStorageUtils";
 
 const FlightComponent = () => {
   const { state, setSearch } = useContext(AppContext);
@@ -39,14 +36,6 @@ const FlightComponent = () => {
     updateSearch();
   }, [state.search]);
 
-  const handleDrawerClick = (index) => {
-    setDrawerOpen((prevState) => {
-      const newState = [...prevState];
-      newState[index] = true;
-      newState[1 - index] = false;
-      return newState;
-    });
-  };
 
   const handleChangeFrom = (event) => {
     setFrom(event.target.value);
@@ -54,6 +43,11 @@ const FlightComponent = () => {
 
   const handleChangeTo = (event) => {
     setTo(event.target.value);
+  };
+
+  const handleSwitch = () => {
+    setFrom(to);
+    setTo(from);
   };
 
   const PopMenuContainer = (flights, label) => {
@@ -67,11 +61,16 @@ const FlightComponent = () => {
         xl={12}
         position={"absolute"}
         sx={{
-          zIndex: 1,
+          zIndex: 1000,
           top: "100%",
         }}
       >
-        <FlightsPopMenu data={flights} label={label} />
+        <FlightsPopMenu
+          setDrawerOpen={setDrawerOpen}
+          drawerOpen={drawerOpen}
+          data={flights}
+          label={label}
+        />
       </Grid>
     );
   };
@@ -100,22 +99,43 @@ const FlightComponent = () => {
       {mobileView ? (
         <SwapVertIcon
           color="primary"
+          onClick={() => {
+            handleSwitch();
+          }}
           sx={{
             position: "absolute",
-            top: "60%",
+            top: "70%",
             left: "50%",
             fontSize: "2rem",
             cursor: "pointer",
+            transform: "translate(-50%, -50%)",
+            zIndex: 1,
+            transitionDuration: "0.8s",
+            transitionTimingFunction: "ease-in-out",
+            /* hover */
+            "&:hover": {
+              transform: "translate(-50%, -50%) rotate(180deg)",
+              transitionDuration: "0.8s",
+              transitionTimingFunction: "ease-in-out",
+              color: "#ff690f",
+              
+            },
           }}
         />
       ) : (
         <SwapHorizOutlinedIcon
           color="primary"
+          onClick={() => {
+            handleSwitch();
+          }}
           sx={{
             fontSize: "2rem",
             marginTop: "1.5rem",
             cursor: "pointer",
             marginLeft: "1rem",
+            "&:hover": {
+              color: "#ff690f",
+            },
           }}
         />
       )}

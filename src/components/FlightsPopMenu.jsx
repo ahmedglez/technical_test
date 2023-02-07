@@ -1,13 +1,13 @@
-import * as React from "react";
+import Avatar from "@mui/material/Avatar";
+import Divider from "@mui/material/Divider";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import Divider from "@mui/material/Divider";
-import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
-import Avatar from "@mui/material/Avatar";
+import ListItemText from "@mui/material/ListItemText";
 import Typography from "@mui/material/Typography";
-import { useContext } from "react";
 import AppContext from "contexts/AppContext";
+import * as React from "react";
+import { useContext } from "react";
 
 export default function FlightsPopMenu(props) {
   const { data, label } = props;

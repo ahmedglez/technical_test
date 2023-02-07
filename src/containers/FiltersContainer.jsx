@@ -17,13 +17,13 @@ const FiltersContainer = () => {
       }}
     >
       <Grid container spacing={2}>
-        <Grid item xs={3} sm={3} md={3} lg={3}>
+        <Grid item xs={6} sm={6} md={3} lg={3}>
           <SimpleSelectMenu
             options={["One-way", "Round-trip", "Multi-city", "Trip Builder"]}
             label={"Flights"}
           />
         </Grid>
-        <Grid item xs={3} sm={3} md={3} lg={3}>
+        <Grid item xs={6} sm={6} md={3} lg={3}>
           <TravelersSelectMenu
             options={[
               ["Adults", "18-64"],
@@ -37,13 +37,13 @@ const FiltersContainer = () => {
             label={"Travelers"}
           />
         </Grid>
-        <Grid item xs={3} sm={3} md={3} lg={3}>
+        <Grid item xs={6} sm={6} md={3} lg={3}>
           <SimpleSelectMenu
             options={["Economy", "Premium Economy", "Business", "First", "Multiple"]}
             label={"Class"}
           />
         </Grid>
-        <Grid item xs={3} sm={3} md={3} lg={3}>
+        <Grid item xs={6} sm={6} md={3} lg={3}>
           <BagsSelectMenu options={["Carry-on", "Checked"]} label={"Bags"} />
         </Grid>
       </Grid>
