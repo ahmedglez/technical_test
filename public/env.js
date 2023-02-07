@@ -1,3 +1,1 @@
-window.env = {
-  "TEST": "Hola Mundo"
-};
+window.env = {};

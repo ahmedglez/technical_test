@@ -21,26 +21,6 @@ module.exports = function override(config, env) {
       Buffer: ["buffer", "Buffer"],
     })
   );
-  config.plugins.push(
-    new webpack.ProvidePlugin(
-      {
-        libraryName: "@mui/material",
-        libraryDirectory: "",
-        camel2DashComponentName: false,
-      },
-      "core"
-    )
-  );
-   config.plugins.push(
-     new webpack.ProvidePlugin(
-       {
-         libraryName: "@mui/icons-material",
-         libraryDirectory: "",
-         camel2DashComponentName: false,
-       },
-       "icons"
-     )
-   );
 
   return config;
 };

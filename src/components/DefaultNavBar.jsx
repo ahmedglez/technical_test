@@ -9,6 +9,7 @@ import {
   useMediaQuery,
   useTheme,
   CardMedia,
+  Box
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import DrawerComp from "./Drawer";
@@ -16,7 +17,6 @@ import logo from "assets/images/logo.png";
 import LoginIcon from "@mui/icons-material/Login";
 import PersonIcon from "@mui/icons-material/Person";
 import Home from "pages/Home";
-import { Box } from "@mui/system";
 const NavBar = () => {
   const [value, setValue] = useState();
   const theme = useTheme();

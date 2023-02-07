@@ -77,7 +77,7 @@ const FlightComponent = () => {
   };
 
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} position="relative">
       <Grid item xs={12} sm={12} md={5.5} lg={5.5} xl={5.5} position="relative">
         <FormControl variant="standard" fullWidth position="relative">
           <InputLabel htmlFor="input-with-icon-adornment">From</InputLabel>
@@ -102,7 +102,7 @@ const FlightComponent = () => {
           color="primary"
           sx={{
             position: "absolute",
-            top: "52.5%",
+            top: "60%",
             left: "50%",
             fontSize: "2rem",
             cursor: "pointer",
